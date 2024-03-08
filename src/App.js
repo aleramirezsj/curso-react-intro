@@ -1,58 +1,36 @@
 import logo from './platzi.webp';
+import { TodoCounter } from './TodoCounter';
+import { TodoSearch } from './TodoSearch';
+import { TodoList } from './TodoList';
+import { TodoItem } from './TodoItem';
+import { CreateTodoButton } from './CreateTodoButton';
 import './App.css';
+
+const listaTareas = [
+	{ text: 'Cambiar la garrafa', completed:false},
+	{ text: 'Ir al padel', completed:false},
+	{ text: 'actualizar el CV', completed:false}
+]
 
 function App() {
   return (
     <div className="App">
+      <TodoCounter completed={3} total={5} />
+      <TodoSearch />
+        
+      <TodoList>
+        {listaTareas.map(tarea=>(
+          <TodoItem 
+            key={tarea.text} 
+            text={tarea.text}
+            completed= {tarea.completed}
+          />
+        ))}
+      </TodoList>
 
-      <TodoItem />
-      <TodoCount completed={3}  total={5}/>
-
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edita el archivo <code>src/App.js</code> y guarda para recargar.
-        </p>
-        <a
-          className="App-link"
-          href="https://platzi.com/reactjs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CreateTodoButton />
     </div>
   );
 }
-
-function TodoItem() {
-  return (
-    <li>
-      <span>V</span>
-      <p>Elemento de prueba</p>
-      <span>X</span>
-    </li>
-  );
-}
-
-function TodoCount({completed, total}) {
-  return (
-    <h1>
-      Completaste {completed} de {total} TODOs
-    </h1>
-  );
-}
-
-<App>
-  <TodoCounter />
-  <TodoSearch />
-  
-  <TodoList>
-    <TodoItem />
-  </TodoList>
-
-  <CreateTodoButton />
-</App>
 
 export default App;
