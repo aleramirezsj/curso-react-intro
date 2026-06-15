@@ -1,9 +1,11 @@
 function TodoItem(props) {
   return (
     <li>
-      <span>V</span>
-      <p>{props.text}</p>
-      <span>X</span>
+      <p>
+        <span>✅</span>
+        {props.text}
+        <span>❌</span>
+      </p>
     </li>
   );
 }
