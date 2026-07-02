@@ -1,7 +1,16 @@
-function CreateTodoButton() {
+import './CreateTodoButton.css';
+
+function CreateTodoButton({ todos, setTodos }) {
     return (
       <>
-        <input type="button" value="Crear una tarea" />
+        <input type="button" value="+" className="CreateTodoButton"
+        onClick={
+          (event) => {
+            console.log("Botón presionado")
+            console.log(event)
+            console.log(event.target)
+          }
+        } />
       </>
     );
   }
